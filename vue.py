@@ -79,13 +79,8 @@ def clear():
     value.set("")
 
 def valid():
-    hello = "Hello " + entree1.get()
-    myLabel = Label(fenetre, text=hello)
-    myLabel.pack(side=LEFT, padx=10, pady=10)
+    readFile()
 
-
-# label = Label(fenetre,text="")
-# label.place(x=10,y=10)
 button = Button(fenetre,text="  5  ",command=num5).place(x=100,y=110)
 button = Button(fenetre,text="  8  ",command=num8).place(x=160,y=110)
 button = Button(fenetre,text="  2  ",command=num2).place(x=220,y=110)
@@ -100,5 +95,19 @@ button = Button(fenetre,text="  7  ",command=num7).place(x=160,y=230)
 button = Button(fenetre,text="  V  ",command=valid).place(x=220,y=230)
 
 ########################################
+
+def readFile():
+    # Ouvrir le fichier en lecture seule
+    file = open('ident.txt', "r")
+    line = file.readline()
+    while line:
+        # utilisez readline() pour lire la ligne suivante
+        id=line.split('*')
+        if id[0] == entree1.get() and id[1] == entree2.get():
+            print("true")
+        line = file.readline()
+    file.close()
+
+
 
 fenetre.mainloop()
